@@ -17,19 +17,30 @@ stateSelector.addEventListener("change", async (e) => {
         return;
     }
 
-    try {
-        const response = await fetch(`${BASE_URL}?api-key=${KEY}&format=json&limit=1000&filters%5Bstatename%5D=${state}`);
-        const data = await response.json();
+    let offset = 0;
+    const LIMIT = 1000;
+    let allFetched = false;
 
-        for (const record of data.records) {
-            totalPincodes.add(record.pincode);
-            totaDistricts.add(record.district);
-        }
+    do {
+        try {
+            const response = await fetch(`${BASE_URL}?api-key=${KEY}&format=json&offset=${offset}&limit=${LIMIT}&filters%5Bstatename%5D=${state}`);
+            const data = await response.json();
+            
+            for (const record of data.records) {
+                totalPincodes.add(record.pincode);
+                totaDistricts.add(record.district);
+            }
+
+            if (data.count < LIMIT) allFetched = true;
+            
+            offset += LIMIT;
     
-        messageElement.innerText = `${state} has ${totalPincodes.size} pincodes and ${totaDistricts.size} districts.`;
+        } catch (error) {
+            console.error(error);
+            messageElement.innerText = "Something went wrong, please try again.";
+            break;
+        }
+    } while (!allFetched);
 
-    } catch (error) {
-        console.error(error);
-        messageElement.innerText = "Something went wrong, please try again."
-    }
+    messageElement.innerText = `${state} has ${totalPincodes.size} pincodes and ${totaDistricts.size} districts.`;
 })
