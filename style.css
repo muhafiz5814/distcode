@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(45, 45, 46);
+}
+
+main {
+    max-width: fit-content;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+select {
+    min-width: 50%;
+    min-height: 35px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(32, 31, 31);
+    color: white;
+}
+
+select:focus {
+    border: 1px aqua solid;
+}
+
+p {
+    font-size: larger;
+}
