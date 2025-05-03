@@ -4,12 +4,10 @@ const messageElement = document.getElementById("message");
 const BASE_URL = "https://api.data.gov.in/resource/5c2f62fe-5afa-4119-a499-fec9d604d5bd"
 const KEY = "579b464db66ec23bdd00000146920f2ff2a444c973bcc2ee67a1dfe8";
 
-
 stateSelector.addEventListener("change", async (e) => {
 
     const totalPincodes = new Set();
     const totaDistricts = new Set();
-
     const state = stateSelector.value;
 
     if (state == "--") {
@@ -32,9 +30,7 @@ stateSelector.addEventListener("change", async (e) => {
             }
 
             if (data.count < LIMIT) allFetched = true;
-            
             offset += LIMIT;
-    
         } catch (error) {
             console.error(error);
             messageElement.innerText = "Something went wrong, please try again.";
