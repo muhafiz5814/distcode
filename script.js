@@ -21,7 +21,7 @@ stateSelector.addEventListener("change", async (e) => {
     const LIMIT = 1000;
     let allFetched = false;
 
-    do {
+    while (!allFetched) {
         try {
             const response = await fetch(`${BASE_URL}?api-key=${KEY}&format=json&offset=${offset}&limit=${LIMIT}&filters%5Bstatename%5D=${state}`);
             const data = await response.json();
@@ -33,12 +33,13 @@ stateSelector.addEventListener("change", async (e) => {
 
             if (data.count < LIMIT) allFetched = true;
             offset += LIMIT;
+
         } catch (error) {
             console.error(error);
             messageElement.innerText = "Something went wrong, please try again.";
             break;
         }
-    } while (!allFetched);
+    };
 
     messageElement.innerText = `${state} has ${totalPincodes.size} pincodes and ${totaDistricts.size} districts.`;
 })
