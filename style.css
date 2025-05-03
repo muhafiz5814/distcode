@@ -30,3 +30,23 @@ select:focus {
 p {
     font-size: larger;
 }
+
+#all-distcodes {
+    /* margin-top: 30px; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.list-div {
+    flex: 1;
+    border: 1px rgb(65, 65, 65) solid;
+}
+
+.list-div h3 {
+    border-bottom: 2px rgb(90, 90, 90) solid;
+}
+
+.list{
+    text-align: start;
+    color: rgb(215, 215, 215);
+}
