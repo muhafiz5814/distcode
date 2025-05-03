@@ -21,6 +21,7 @@ stateSelector.addEventListener("change", async (e) => {
     const LIMIT = 1000;
     let allFetched = false;
 
+    // Limit can be set to 1000 maximum. For states with more than 1000 records, it is required to refetch data with changed offset value to get all the records.
     while (!allFetched) {
         try {
             const response = await fetch(`${BASE_URL}?api-key=${KEY}&format=json&offset=${offset}&limit=${LIMIT}&filters%5Bstatename%5D=${state}`);
@@ -31,6 +32,7 @@ stateSelector.addEventListener("change", async (e) => {
                 totaDistricts.add(record.district);
             }
 
+            // 'count' is the total number records fetched in a request.
             if (data.count < LIMIT) allFetched = true;
             offset += LIMIT;
 
