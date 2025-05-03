@@ -1,7 +1,7 @@
 ## Description
 This application gets total number of unique pincodes and districts in north eastern states of India.
 
-Data is fetched from [Open Government Data (OGD) Platform India](https://www.data.gov.in/), an official Indian Govt. platform.
+Data is fetched from <a href="https://www.data.gov.in/" target="_blank">Open Government Data (OGD) Platform India</a>, an official Indian Govt. platform.
 
 ### How to use
 It's an easy to use application providing better user experience with good UI.
