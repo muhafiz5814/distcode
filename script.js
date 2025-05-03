@@ -15,6 +15,8 @@ stateSelector.addEventListener("change", async (e) => {
         return;
     }
 
+    messageElement.innerText = "Loading..."
+
     let offset = 0;
     const LIMIT = 1000;
     let allFetched = false;
