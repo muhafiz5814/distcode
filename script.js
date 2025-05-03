@@ -8,6 +8,9 @@ const KEY = "579b464db66ec23bdd00000146920f2ff2a444c973bcc2ee67a1dfe8";
 
 stateSelector.addEventListener("change", async (e) => {
 
+    districtListElement.innerHTML = ""
+    pincodeListElement.innerHTML = ""
+
     const totalPincodes = new Set();
     const totaDistricts = new Set();
     const state = stateSelector.value;
