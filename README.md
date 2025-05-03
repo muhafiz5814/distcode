@@ -19,5 +19,4 @@ And done! In just two steps user will get total number of unique `pincodes`and `
 
 ### Possible enhancements
 1. A proxy backend server can be implemented to prevent KEYs and other secerets to be disclosed to everyone. (As this is just a demo project and the key only has `read` permissions for the data, it's safe to use it for now)
-2. All the unique pincodes and districts can be shown to user on screen.
-3. More states can be added to the list.
+2. More states can be added to the list.

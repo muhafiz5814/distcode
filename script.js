@@ -1,10 +1,15 @@
 const stateSelector = document.querySelector("select");
 const messageElement = document.getElementById("message");
+const districtListElement = document.getElementById("district-list");
+const pincodeListElement = document.getElementById("pincode-list");
 
 const BASE_URL = "https://api.data.gov.in/resource/5c2f62fe-5afa-4119-a499-fec9d604d5bd"
 const KEY = "579b464db66ec23bdd00000146920f2ff2a444c973bcc2ee67a1dfe8";
 
 stateSelector.addEventListener("change", async (e) => {
+
+    districtListElement.innerHTML = ""
+    pincodeListElement.innerHTML = ""
 
     const totalPincodes = new Set();
     const totaDistricts = new Set();
@@ -44,4 +49,12 @@ stateSelector.addEventListener("change", async (e) => {
     };
 
     messageElement.innerText = `${state} has ${totalPincodes.size} pincodes and ${totaDistricts.size} districts.`;
-})
+
+    for (const district of totaDistricts.values()) {
+        districtListElement.innerHTML += `<li>${district}</li>`
+    }
+
+    for (const pincode of totalPincodes.values()) {
+        pincodeListElement.innerHTML += `<li>${pincode}</li>`
+    }
+});
